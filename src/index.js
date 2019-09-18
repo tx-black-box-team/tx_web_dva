@@ -1,6 +1,7 @@
 import dva from 'dva';
-import { registerModels } from './models'
-import './index.css';
+import { registerModels } from './models';
+import router from './routes/index.jsx';
+import 'antd/es/button/style/index.css'
 
 // 1. Initialize
 const app = dva();
@@ -9,11 +10,10 @@ const app = dva();
 // app.use({});
 
 // 3. Model
-// app.model(require('./models/example').default);
 registerModels(app)
 
 // 4. Router
-app.router(require('./router').default);
+app.router(router);
 
 // 5. Start
 app.start('#root');
