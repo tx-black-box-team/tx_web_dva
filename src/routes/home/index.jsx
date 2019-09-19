@@ -7,33 +7,29 @@ import { getHomeDispatch } from '../../beans';
 
 import styles from './index.scss';
 
-const mapStateToProps = ({ home }) => {
-  return home;
-};
+const mapStateToProps = ({ home }) => home;
 
 const mapDispatchToProps = dispatch => ({
-  ...getHomeDispatch(['serach_list'], dispatch),
+  ...getHomeDispatch(['serach_list', 'search'], dispatch),
 });
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    const { list } = this.props;
-    this.home_logo_props = {};
-    this.home_input_props = {
-      list,
-    };
-  }
-
   static propTypes = {
     list: PropTypes.array.isRequired,
+    search: PropTypes.func.isRequired,
   };
 
   render() {
+    const { list, search } = this.props;
+    const home_logo_props = {};
+    const home_input_props = {
+      list,
+      search,
+    };
     return (
       <div className={styles['home']}>
-        <HomeLogo {...this.home_logo_props} />
-        <HomeInput {...this.home_input_props} />
+        <HomeLogo {...home_logo_props} />
+        <HomeInput {...home_input_props} />
       </div>
     );
   }
