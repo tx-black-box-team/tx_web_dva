@@ -46,6 +46,10 @@ class HomeInput extends React.Component {
     );
   }
 
+  query_search = value => {
+    console.log(value);
+  }
+
   render () {
     const {
       list = []
@@ -56,6 +60,7 @@ class HomeInput extends React.Component {
         ref="search_area"
       >
         <AutoComplete
+          allowClear
           className={styles['search-area']}
           dataSource={list.map(this.options)}
           onSelect={this.handle_select}

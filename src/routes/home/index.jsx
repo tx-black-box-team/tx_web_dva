@@ -4,11 +4,20 @@ import { connect } from 'dva';
 import PropTypes from 'prop-types';
 import HomeLogo from '../../components/home/logo';
 import HomeInput from '../../components/home/input';
+import { getHomeDispatch } from '../../beans';
 
 import styles from './index.scss';
 
 const mapStateToProps = ({ home }) => {
   return home;
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    ...getHomeDispatch([
+      'serach_list'
+    ], dispatch)
+  };
 };
 
 class Home extends React.Component {
@@ -37,4 +46,4 @@ class Home extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

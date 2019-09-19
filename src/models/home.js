@@ -1,3 +1,5 @@
+import { genSetRedurcer } from '../utils';
+
 export default {
 
   namespace: 'home',
@@ -18,6 +20,9 @@ export default {
   },
 
   reducers: {
+    ...genSetRedurcer([
+      'list'
+    ]),
     save (state, action) {
       return { ...state, ...action.payload };
     },
