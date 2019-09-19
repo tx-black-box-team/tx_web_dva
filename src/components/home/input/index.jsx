@@ -1,20 +1,23 @@
 import React from 'react';
-import { connect } from 'dva';
-import { AutoComplete, Tag, Input, Icon } from 'antd';
+import { AutoComplete, Tag, Input, Icon, Button } from 'antd';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import styles from './index.scss';
 import { ROLE_TYPE } from '../../../beans';
 import { date_formart } from '../../../utils';
 
-class HomeInput extends React.Component {
+export default class HomeInput extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      search_value: '',
+    };
   }
 
   static propTypes = {
     list: PropTypes.array.isRequired,
     search: PropTypes.func.isRequired,
+    to_result: PropTypes.func.isRequired,
   };
 
   createMarkup = html => ({ __html: html });
@@ -46,7 +49,7 @@ class HomeInput extends React.Component {
     );
   };
 
-  debounceSearch = _.debounce((value, search) => {
+  _debounce_search = _.debounce((value, search) => {
     search({
       Name: value,
       PageIndex: 1,
@@ -55,15 +58,22 @@ class HomeInput extends React.Component {
 
   query_search = value => {
     const { search } = this.props;
-    this.debounceSearch(value, search);
+    this.setState({ search_value: value });
+    this._debounce_search(value, search);
+  };
+
+  handle_key = () => {
+    const { search_value } = this.state;
+    const { to_result } = this.props;
+    to_result(search_value);
   };
 
   render() {
     const { list = [] } = this.props;
+    const { search_value = '' } = this.state;
     return (
       <div className={`${styles['search-box']} ${styles['render']}`}>
         <AutoComplete
-          allowClear
           className={styles['search-area']}
           dataSource={list.map(this.options)}
           onSelect={this.handle_select}
@@ -71,11 +81,20 @@ class HomeInput extends React.Component {
           placeholder="请输入你想搜索的内容"
           optionLabelProp="text"
         >
-          <Input prefix={<Icon type="search" />} />
+          <Input
+            value={search_value}
+            prefix={<Icon type="search" />}
+            suffix={
+              <Button
+                type="primary"
+                shape="circle"
+                icon="search"
+                onClick={this.handle_key}
+              />
+            }
+          />
         </AutoComplete>
       </div>
     );
   }
 }
-
-export default connect()(HomeInput);

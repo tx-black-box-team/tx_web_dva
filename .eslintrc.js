@@ -20,6 +20,6 @@ module.exports = {
     'no-console': OFF,
     'no-debugger': WARN,
     // 类成员之间加空行
-    'lines-between-class-members': [ERROR, 'always'],
+    'lines-between-class-members': [ERROR, 'always']
   },
 };

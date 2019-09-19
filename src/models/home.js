@@ -1,6 +1,7 @@
 import { genSetRedurcer } from '../utils';
 import { globalSearch } from '../services/home';
 import { hight_light } from '../utils';
+import { routerRedux } from 'dva/router';
 
 export default {
   namespace: 'home',
@@ -23,6 +24,13 @@ export default {
         type: 'setList',
         list,
       });
+    },
+    *to_result({ result }, { put }) {
+      yield put(
+        routerRedux.push({
+          pathname: `/main/result/${encodeURIComponent(result)}`,
+        }),
+      );
     },
   },
 

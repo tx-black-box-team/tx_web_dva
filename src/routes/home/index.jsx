@@ -10,21 +10,23 @@ import styles from './index.scss';
 const mapStateToProps = ({ home }) => home;
 
 const mapDispatchToProps = dispatch => ({
-  ...getHomeDispatch(['serach_list', 'search'], dispatch),
+  ...getHomeDispatch(['serach_list', 'search', 'to_result'], dispatch),
 });
 
 class Home extends React.Component {
   static propTypes = {
     list: PropTypes.array.isRequired,
     search: PropTypes.func.isRequired,
+    to_result: PropTypes.func.isRequired,
   };
 
   render() {
-    const { list, search } = this.props;
+    const { list, search, to_result } = this.props;
     const home_logo_props = {};
     const home_input_props = {
       list,
       search,
+      to_result,
     };
     return (
       <div className={styles['home']}>

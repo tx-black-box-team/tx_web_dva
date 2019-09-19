@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect } from 'dva';
 import styles from './index.scss';
 
-class Logo extends React.Component {
+export default class Logo extends React.Component {
   render() {
     return (
       <div className={`${styles['logo-con']} ${styles['render']}`}>
@@ -12,5 +11,3 @@ class Logo extends React.Component {
     );
   }
 }
-
-export default connect()(Logo);

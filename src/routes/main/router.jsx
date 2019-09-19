@@ -4,6 +4,7 @@ import { Switch, Route, withRouter } from 'dva/router';
 import PropTypes from 'prop-types';
 import Main from '.';
 import Home from '../home';
+import Result from '../result';
 
 class MainRoute extends React.Component {
   static propTypes = {
@@ -18,6 +19,7 @@ class MainRoute extends React.Component {
       <Main>
         <Switch location={location}>
           <Route path={`${match.path}/home`} component={Home} />
+          <Route path={`${match.path}/result/:search`} component={Result} />
         </Switch>
       </Main>
     );
