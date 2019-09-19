@@ -2,7 +2,9 @@ export default {
 
   namespace: 'home',
 
-  state: {},
+  state: {
+    list: []
+  },
 
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
@@ -16,7 +18,7 @@ export default {
   },
 
   reducers: {
-    save(state, action) {
+    save (state, action) {
       return { ...state, ...action.payload };
     },
   },

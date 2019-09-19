@@ -1,0 +1,39 @@
+@import 'src/assets/scss/_base.scss';
+@import 'src/assets/scss/_animation.scss';
+@import 'src/assets/scss/_icon.scss';
+$root_url: '../../../assets/imgs/';
+
+.logo-con {
+  @include h-center;
+  top: 100px;
+  width: 200px;
+  height: 300px;
+  text-align: center;
+  transform: translateY(-2000px);
+
+  &.render {
+    @include drop(-2000px, 0);
+    animation: drop .5s;
+    animation-delay: 300ms;
+    animation-fill-mode: forwards;
+  }
+
+  & > i {
+    display: block;
+    width: 200px;
+    height: 200px;
+    @include icon('#{$root_url}logo.png');
+  }
+
+  & > p {
+    color: transparent;
+    font-size: 30px;
+    background: linear-gradient(to top, $logo_text_dark, $logo_text_light);
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-weight: 700;
+    letter-spacing: 2px;
+    -webkit-box-reflect: below -10px -webkit-linear-gradient(transparent, transparent 30%, $white_whole);
+  }
+}

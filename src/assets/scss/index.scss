@@ -1,0 +1,54 @@
+@import '_color.scss';
+@import '_const.scss';
+@import '_icon.scss';
+@import '_reset.scss';
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+:global {
+  .app {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .main-body {
+      position: relative;
+      width: 100%;
+      height: calc(100% - 61px);
+      z-index: 101;
+    }
+
+    .flur-box {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      filter: blur(5px);
+      background-color: $scroll_color;
+      z-index: 100;
+
+      @for $i from 1 through length($Solar) {
+        $item: nth($Solar, $i);
+        &.login-bg#{$i} {
+          $sol: map-get($item, name);
+          @include web_bg('/local/file/bg.jpeg?img=#{$sol}.jpeg');
+          background-size: auto calc(100% + 86px);
+          background-position: center -43px;
+        }
+      }
+    }
+  }
+}
+

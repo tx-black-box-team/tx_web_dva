@@ -1,0 +1,40 @@
+@import 'src/assets/scss/_base';
+@import 'src/assets/scss/_animation';
+
+.search-box {
+  @include c-center;
+  width: 500px;
+  height: 50px;
+  transform: translateY(-2000px);
+
+  &.render {
+    @include drop(-2000px, -40px);
+    animation: drop .5s;
+    animation-delay: 300ms;
+    animation-fill-mode: forwards;
+  }
+
+  .search-area {
+    width: 100%;
+    height: 100%;
+
+    :global {
+      .ant-select-selection {
+        height: 50px !important;
+        background-color: $bg_color_dark;
+
+        .ant-select-search {
+          height: 50px;
+        }
+
+        .ant-select-selection__placeholder {
+          padding-left: 20px;
+        }
+      }
+
+      .ant-input {
+        height: 100%;
+      }
+    }
+  }
+}
