@@ -8,13 +8,11 @@ import { getPreviewDispatch } from '../../beans';
 
 const mapStateToProps = ({ preview }) => preview;
 const mapDispatchToProps = dispatch => ({
-  ...getPreviewDispatch([
-    'redirect'
-  ], dispatch)
+  ...getPreviewDispatch(['redirect'], dispatch),
 });
 
 class Preview extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     const { redirect } = this.props;
     redirect({});
   }
@@ -23,23 +21,28 @@ class Preview extends React.Component {
     redirect: PropTypes.func.isRequired,
     ready: PropTypes.bool.isRequired,
     children: PropTypes.object.isRequired,
-  }
+  };
 
   antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
-  render () {
+  render() {
     const { ready } = this.props;
     return (
       <div className={styles['preview-main']}>
-        { !ready &&
+        {!ready && (
           <div className={styles['loading-spain']}>
-            <Spin indicator={this.antIcon} tip="启动中，请稍后"/>
+            <Spin indicator={this.antIcon} tip="启动中，请稍后" />
           </div>
-        }
+        )}
         {this.props.children}
       </div>
     );
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Preview));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(Preview),
+);

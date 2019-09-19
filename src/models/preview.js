@@ -2,19 +2,18 @@ import { routerRedux } from 'dva/router';
 import { genSetRedurcer } from '../utils';
 
 export default {
-
   namespace: 'preview',
 
   state: {
-    ready: false
+    ready: false,
   },
 
   subscriptions: {
-    setup ({ dispatch, history }) {
+    setup({ dispatch, history }) {
       history.listen(({ pathname }) => {
         if (pathname === '/') {
           dispatch({
-            type: 'redirect'
+            type: 'redirect',
           });
         }
       });
@@ -22,21 +21,20 @@ export default {
   },
 
   effects: {
-    *redirect (action, { put }) {
+    *redirect(action, { put }) {
       yield put({
         type: 'setReady',
-        ready: true
+        ready: true,
       });
-      yield put(routerRedux.push({
-        pathname: '/main/home'
-      }));
-    }
+      yield put(
+        routerRedux.push({
+          pathname: '/main/home',
+        }),
+      );
+    },
   },
 
   reducers: {
-    ...genSetRedurcer([
-      'ready'
-    ]),
+    ...genSetRedurcer(['ready']),
   },
-
 };

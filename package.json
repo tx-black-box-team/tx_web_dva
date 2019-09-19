@@ -4,6 +4,7 @@
     "start": "roadhog server",
     "build": "roadhog build",
     "lint": "eslint --ext .js src test",
+    "prettier": "prettier --write 'src/**/*.{js,jsx,less}'",
     "precommit": "npm run lint"
   },
   "dependencies": {
@@ -16,23 +17,20 @@
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.3",
     "babel-plugin-dva-hmr": "^0.3.2",
-    "eslint": "^4.14.0",
+    "eslint": "^4.19.1",
     "eslint-config-prettier": "^6.3.0",
-    "eslint-config-standard": "^14.1.0",
     "eslint-config-umi": "^0.1.1",
+    "eslint-loader": "^2.2.1",
     "eslint-plugin-flowtype": "^2.34.1",
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.13.4",
-    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-react": "^7.14.3",
     "husky": "^0.12.0",
     "node-sass": "^4.12.0",
     "prettier": "^1.18.2",
-    "prettier-eslint-cli": "^5.0.0",
     "redbox-react": "^1.4.3",
     "roadhog": "^2.5.0-beta.4",
     "sass-loader": "^7.3.1"

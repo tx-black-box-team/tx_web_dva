@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import styles from './index.scss';
 
 class Logo extends React.Component {
-  render () {
+  render() {
     return (
       <div className={`${styles['logo-con']} ${styles['render']}`}>
         <i></i>

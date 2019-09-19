@@ -29,7 +29,7 @@
  *   }
  * }
  */
-export function genSetRedurcer (list) {
+export function genSetRedurcer(list) {
   // 判断类型
   for (const v of list) {
     if (typeof v !== 'string' || !v.length) {
@@ -44,12 +44,12 @@ export function genSetRedurcer (list) {
   const res = setList.reduce((acc, cur, idx) => {
     return {
       ...acc,
-      [cur]: function (state, payload) {
+      [cur]: function(state, payload) {
         return {
           ...state,
-          [list[idx]]: payload[list[idx]]
+          [list[idx]]: payload[list[idx]],
         };
-      }
+      },
     };
   }, []);
   return res;
@@ -78,8 +78,8 @@ export function genSetRedurcer (list) {
  *     dispatch({ type: 'editor/setTopPersons', topPersons })
  * };
  */
-export function getSetDispatch (baseName) {
-  return function (setList, dispatch) {
+export function getSetDispatch(baseName) {
+  return function(setList, dispatch) {
     // 判断类型
     for (const v of setList) {
       if (typeof v !== 'string' || v.length < 4) {
@@ -97,12 +97,12 @@ export function getSetDispatch (baseName) {
     const res = setList.reduce((acc, cur, idx) => {
       return {
         ...acc,
-        [cur]: function (payload) {
+        [cur]: function(payload) {
           dispatch({
             type: `${baseName}/${cur}`,
-            [list[idx]]: payload
+            [list[idx]]: payload,
           });
-        }
+        },
       };
     }, []);
     return res;

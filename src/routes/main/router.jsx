@@ -9,13 +9,10 @@ class MainRoute extends React.Component {
   static propTypes = {
     location: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
-  }
+  };
 
-  render () {
-    const {
-      location,
-      match
-    } = this.props;
+  render() {
+    const { location, match } = this.props;
 
     return (
       <Main>

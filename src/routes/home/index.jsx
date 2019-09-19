@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { connect } from 'dva';
 import PropTypes from 'prop-types';
@@ -13,35 +12,34 @@ const mapStateToProps = ({ home }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  ...getHomeDispatch([
-    'serach_list'
-  ], dispatch)
+  ...getHomeDispatch(['serach_list'], dispatch),
 });
 
 class Home extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
-    const {
-      list
-    } = this.props;
+    const { list } = this.props;
     this.home_logo_props = {};
     this.home_input_props = {
-      list
+      list,
     };
   }
 
   static propTypes = {
     list: PropTypes.array.isRequired,
-  }
+  };
 
-  render () {
+  render() {
     return (
       <div className={styles['home']}>
         <HomeLogo {...this.home_logo_props} />
-        <HomeInput {...this.home_input_props}/>
+        <HomeInput {...this.home_input_props} />
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Home);

@@ -6,20 +6,18 @@ import styles from './index.scss';
 import { MENU_MAP } from '../../beans';
 
 class Header extends React.Component {
-  render () {
+  render() {
     return (
       <div className={styles['header-main']}>
-        <div className={styles['logo']} >
+        <div className={styles['logo']}>
           <i></i>
           <p>天下3小黑盒</p>
         </div>
         <div className={styles['menu-box']}>
           <Menu className={styles['menu-con']} mode="horizontal">
-            {
-              MENU_MAP.map(item =>
-                <Menu.Item key={item.path}>{item.name}</Menu.Item>
-              )
-            }
+            {MENU_MAP.map(item => (
+              <Menu.Item key={item.path}>{item.name}</Menu.Item>
+            ))}
           </Menu>
         </div>
         <div className={styles['user-box']}></div>
