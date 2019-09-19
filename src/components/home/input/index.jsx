@@ -6,10 +6,20 @@ import {
   Input,
   Icon
 } from 'antd';
+import PropTypes from 'prop-types';
 import styles from './index.scss';
 import { ROLE_TYPE } from '../../../beans';
 
 class HomeInput extends React.Component {
+  constructor (props) {
+    super(props);
+    console.log(props);
+  }
+
+  static propTypes = {
+    list: PropTypes.array.isRequired,
+  }
+
   options = (item, index) => {
     return (
       <AutoComplete.Option
@@ -37,7 +47,9 @@ class HomeInput extends React.Component {
   }
 
   render () {
-    const list = [];
+    const {
+      list = []
+    } = this.props;
     return (
       <div
         className={`${styles['search-box']} ${styles['render']}`}

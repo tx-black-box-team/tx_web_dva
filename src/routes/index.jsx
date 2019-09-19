@@ -1,11 +1,11 @@
+/* eslint-disable react/prop-types */
 
 import React from 'react';
 import { Router, Switch, Route } from 'dva/router';
 import Main from './main/router';
-import createBrowHistory from 'history/createBrowserHistory';
 
-function RouterConfig () {
-  return <Router history={createBrowHistory()}>
+function RouterConfig ({ history }) {
+  return <Router history={history}>
     <Switch>
       <Route path="/main" component={Main}></Route>
     </Switch>
