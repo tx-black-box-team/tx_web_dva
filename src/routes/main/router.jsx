@@ -19,7 +19,7 @@ class MainRoute extends React.Component {
       <Main>
         <Switch location={location}>
           <Route path={`${match.path}/home`} component={Home} />
-          <Route path={`${match.path}/result/:search`} component={Result} />
+          <Route path={`${match.path}/result`} component={Result} />
         </Switch>
       </Main>
     );
