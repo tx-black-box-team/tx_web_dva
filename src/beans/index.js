@@ -2,6 +2,8 @@ import { getSetDispatch } from '../utils';
 
 export const getHomeDispatch = getSetDispatch('home');
 
+export const getPreviewDispatch = getSetDispatch('preview');
+
 export const MENU_MAP = [
   {
     name: '首页',

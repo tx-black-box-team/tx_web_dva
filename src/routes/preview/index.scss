@@ -1,0 +1,17 @@
+@import 'src/assets/scss/_color';
+
+.preview-main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  .loading-spain {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $bg_color_normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

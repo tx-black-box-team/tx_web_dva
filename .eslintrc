@@ -196,8 +196,7 @@
       "multi-line"
     ],
     "operator-linebreak": [
-      "error",
-      "before"
+      "error"
     ],
     "no-constant-condition": [
       "error",

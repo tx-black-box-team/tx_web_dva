@@ -3,10 +3,9 @@ import { connect } from 'dva';
 import { withRouter } from 'dva/router';
 import { Menu } from 'antd';
 import styles from './index.scss';
-import { MENU_MAP } from '../../beans'
+import { MENU_MAP } from '../../beans';
 
 class Header extends React.Component {
-
   render () {
     return (
       <div className={styles['header-main']}>
@@ -25,8 +24,8 @@ class Header extends React.Component {
         </div>
         <div className={styles['user-box']}></div>
       </div>
-    )
+    );
   }
 }
 
-export default withRouter(connect()(Header))
+export default withRouter(connect()(Header));

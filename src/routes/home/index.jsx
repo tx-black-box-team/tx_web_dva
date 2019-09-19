@@ -12,13 +12,11 @@ const mapStateToProps = ({ home }) => {
   return home;
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    ...getHomeDispatch([
-      'serach_list'
-    ], dispatch)
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  ...getHomeDispatch([
+    'serach_list'
+  ], dispatch)
+});
 
 class Home extends React.Component {
   constructor (props) {

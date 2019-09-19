@@ -3,11 +3,14 @@
 import React from 'react';
 import { Router, Switch, Route } from 'dva/router';
 import Main from './main/router';
+import Preview from './preview';
 
 function RouterConfig ({ history }) {
   return <Router history={history}>
     <Switch>
-      <Route path="/main" component={Main}></Route>
+      <Preview>
+        <Route path="/main" component={Main} />
+      </Preview>
     </Switch>
   </Router>;
 }

@@ -1,15 +1,21 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Switch, Route } from 'dva/router';
+import { Switch, Route, withRouter } from 'dva/router';
+import PropTypes from 'prop-types';
 import Main from '.';
-import Home from '../home'
+import Home from '../home';
 
 class MainRoute extends React.Component {
+  static propTypes = {
+    location: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
+  }
+
   render () {
     const {
       location,
       match
-    } = this.props
+    } = this.props;
 
     return (
       <Main>
@@ -17,8 +23,8 @@ class MainRoute extends React.Component {
           <Route path={`${match.path}/home`} component={Home} />
         </Switch>
       </Main>
-    )
+    );
   }
 }
 
-export default connect()(MainRoute)
+export default withRouter(connect()(MainRoute));
