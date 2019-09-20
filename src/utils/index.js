@@ -136,6 +136,8 @@ export const date_formart = (num, type) => {
         return moment(num).format('MMMM/YYYY');
       case 'day':
         return moment(num).format('DD');
+      default:
+        return moment(num).format('YYYY-MM-DD HH:mm:ss');
     }
   }
   return '';

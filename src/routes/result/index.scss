@@ -1,0 +1,6 @@
+@import '../../assets/scss/_base';
+
+.result-main {
+  @include middle-con;
+  height: 100%;
+}

@@ -4,6 +4,8 @@ export const getHomeDispatch = getSetDispatch('home');
 
 export const getPreviewDispatch = getSetDispatch('preview');
 
+export const getResultDispatch = getSetDispatch('result');
+
 export const MENU_MAP = [
   {
     name: '首页',

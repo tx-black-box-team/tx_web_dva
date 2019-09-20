@@ -1,6 +1,6 @@
-@import 'src/assets/scss/_base.scss';
-@import 'src/assets/scss/_animation.scss';
-@import 'src/assets/scss/_icon.scss';
+@import '../../../assets/scss/_base.scss';
+@import '../../../assets/scss/_animation.scss';
+@import '../../../assets/scss/_icon.scss';
 $root_url: '../../../assets/imgs/';
 
 .logo-con {
@@ -13,7 +13,7 @@ $root_url: '../../../assets/imgs/';
 
   &.render {
     @include drop(-2000px, 0);
-    animation: drop .5s;
+    animation: drop 0.5s;
     animation-delay: 300ms;
     animation-fill-mode: forwards;
   }
@@ -34,6 +34,10 @@ $root_url: '../../../assets/imgs/';
     -webkit-background-clip: text;
     font-weight: 700;
     letter-spacing: 2px;
-    -webkit-box-reflect: below -10px -webkit-linear-gradient(transparent, transparent 30%, $white_whole);
+    -webkit-box-reflect: below -10px -webkit-linear-gradient(
+        transparent,
+        transparent 30%,
+        $white_whole
+      );
   }
 }

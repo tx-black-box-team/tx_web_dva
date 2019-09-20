@@ -1,5 +1,5 @@
-@import 'src/assets/scss/_base';
-@import 'src/assets/scss/_animation';
+@import '../../../assets/scss/_base';
+@import '../../../assets/scss/_animation';
 
 .search-box {
   @include c-center;
@@ -9,7 +9,7 @@
 
   &.render {
     @include drop(-2000px, -40px);
-    animation: drop .5s;
+    animation: drop 0.5s;
     animation-delay: 300ms;
     animation-fill-mode: forwards;
   }

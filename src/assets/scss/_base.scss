@@ -29,6 +29,12 @@
   }
 }
 
+@mixin middle-con {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 //去除登录页面在chrome下的用户名密码自动填充样式
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

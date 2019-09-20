@@ -37,10 +37,10 @@ export default class HomeInput extends React.Component {
           <div
             className={styles['name']}
             dangerouslySetInnerHTML={this.createMarkup(item.Name)}
-          ></div>
+          />
         </div>
         <div className={styles['bottom-info']}>
-          <div className={styles['service-indo']}>{item.YXQ}</div>
+          <div className={styles['service-info']}>{item.YXQ}</div>
           <div className={styles['create-time']}>
             {date_formart(item.CreateTime, 'date_time')}
           </div>

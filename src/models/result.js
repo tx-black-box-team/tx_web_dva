@@ -1,18 +1,26 @@
 import { globalSearch } from '../services/home';
 import { genSetRedurcer, hight_light } from '../utils';
+import { routerRedux } from 'dva/router';
 
 export default {
   namespace: 'result',
+
   state: {
     pageIndex: 1,
+    searchValue: '',
+    finished: false,
     tableList: [],
-    autoList: [],
   },
+
   subscriptions: {
     setup({ history, dispatch }) {
       history.listen(({ pathname, search }) => {
         if (pathname === '/main/result') {
           const search_str = decodeURIComponent(search.replace(/^\?/g, ''));
+          dispatch({
+            type: 'setSearchValue',
+            searchValue: search_str,
+          });
           dispatch({
             type: 'setPageIndex',
             pageIndex: 1,
@@ -25,6 +33,7 @@ export default {
       });
     },
   },
+
   effects: {
     *search(action, { call, put, select }) {
       const Name = action.search_str;
@@ -33,27 +42,45 @@ export default {
         PageIndex: pageIndex,
         Name,
       });
-      const tableList = (res && res.data) || [];
-      yield put({
-        type: 'setTableList',
-        tableList,
-      });
+      let tableList = [];
+      res && res.data.length > 0 && (tableList = res.data);
+      if (tableList.length) {
+        tableList = hight_light(Name, tableList, 'Name');
+        yield put({
+          type: 'setTableList',
+          tableList,
+        });
+      }
+      if (pageIndex > 1 && !tableList.length) {
+        yield put({
+          type: 'setPageIndex',
+          PageIndex: pageIndex - 1,
+        });
+        yield put({
+          type: 'setFinished',
+          finished: true,
+        });
+      }
     },
-    *auto_search(action, { call, put }) {
-      const Name = action.o_search;
-      const PageIndex = 1;
-      let autoList = [];
-      const res = yield call(globalSearch, {
-        PageIndex,
-        Name,
-      });
-      res && res.data && (autoList = res.data.slice(0, 5));
-      autoList.length && (autoList = hight_light(Name, autoList, 'Name'));
-      yield put({
-        type: 'setAutoList',
-        autoList,
-      });
+
+    *routeGo(action, { put }) {
+      const Name = action.teGo;
+      yield put(
+        routerRedux.push({
+          pathname: '/main/result',
+          search: encodeURIComponent(Name),
+        }),
+      );
     },
+
+    *backHome(action, { put }) {
+      yield put(
+        routerRedux.push({
+          pathname: '/main/home',
+        }),
+      );
+    },
+
     *changePage(action, { put }) {
       const { Name, PageIndex } = action.ngePage;
       yield put({
@@ -66,7 +93,8 @@ export default {
       });
     },
   },
+
   reducers: {
-    ...genSetRedurcer(['pageIndex', 'tableList', 'autoList']),
+    ...genSetRedurcer(['pageIndex', 'tableList', 'searchValue', 'finished']),
   },
 };
