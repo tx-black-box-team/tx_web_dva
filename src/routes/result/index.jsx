@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
+import styles from './index.scss';
 
 const mapStateToProps = ({ result }) => result;
 
@@ -7,7 +8,12 @@ const mapStateToProps = ({ result }) => result;
 
 class Result extends React.Component {
   render() {
-    return <div>222</div>;
+    return (
+      <div className={styles['result-main']}>
+        <div className={styles['result-header']}></div>
+        <div className={styles['result-body']}></div>
+      </div>
+    );
   }
 }
 

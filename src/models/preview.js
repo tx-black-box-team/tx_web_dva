@@ -32,6 +32,14 @@ export default {
         }),
       );
     },
+    *ready_page(action, { put, select }) {
+      const { ready } = yield select(store => store.preview);
+      !ready &&
+        (yield put({
+          type: 'setReady',
+          ready: true,
+        }));
+    },
   },
 
   reducers: {

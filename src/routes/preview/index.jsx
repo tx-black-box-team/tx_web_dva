@@ -8,17 +8,17 @@ import { getPreviewDispatch } from '../../beans';
 
 const mapStateToProps = ({ preview }) => preview;
 const mapDispatchToProps = dispatch => ({
-  ...getPreviewDispatch(['redirect'], dispatch),
+  ...getPreviewDispatch(['ready_page'], dispatch),
 });
 
 class Preview extends React.Component {
   componentDidMount() {
-    const { redirect } = this.props;
-    redirect({});
+    const { ready_page } = this.props;
+    ready_page();
   }
 
   static propTypes = {
-    redirect: PropTypes.func.isRequired,
+    ready_page: PropTypes.func.isRequired,
     ready: PropTypes.bool.isRequired,
     children: PropTypes.object.isRequired,
   };
