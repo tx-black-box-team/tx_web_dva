@@ -1,0 +1,14 @@
+.result-header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+
+  .search-input {
+    width: 300px;
+  }
+
+  .search-btn {
+    margin-left: 10px;
+  }
+}
